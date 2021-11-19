@@ -1,0 +1,75 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% load humanize %}
+{% block content%}
+<div class="container">
+    <div class="row my-2">
+      <div class="col-md-12">
+      <div class="invoice-title text-right">
+          <h3 align="right">รหัสใบสั่งซื้อ #{{order.id}}</h3>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <address>
+          <strong>ผู้ขายสินค้า:</strong><br>
+            AREAgame<br>
+            ถนนประชาอุทิศ แขวงบางมด <br>
+            เขตทุ่งครุ จังหวัดกรุงเทพฯ <br>
+            10140
+          </address>
+        </div>
+        <div class="col-md-6 text-end">
+          <address>
+            <strong>ผู้ซื้อสินค้า:</strong><br>
+            ชื่อ: {{order.name}}<br>
+            {{order.address}}<br>
+            {{order.city}}<br>
+            {{order.postcode}}
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>รายการสั่งซื้อ</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                              <tr>
+                    <td><strong>ชื่อสินค้า</strong></td>
+                    <td class="text-center"><strong>ราคา</strong></td>
+                    <td class="text-center"><strong>จำนวน</strong></td>
+                    <td class="text-end"><strong>รวม</strong></td>
+                              </tr>
+              </thead>
+              <tbody>
+                {% for item in order_items %}
+                <tr>
+                  <td>{{item.product}},{{item.sugar}}</td>
+                  <td class="text-center">{{item.price|intcomma}}</td>
+                  <td class="text-center">{{item.quantity}}</td>
+                  <td class="text-end">{{item.sub_total|intcomma}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td class="no-line text-center"></td>
+                    <td class="no-line text-center"></td>
+                    <td class="no-line text-center"><strong>ยอดรวมทั้งหมด</strong></td>
+                    <td class="no-line text-end">{{order.total|intcomma}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock%}

@@ -1,0 +1,80 @@
+{% include 'index.html' %}
+{% load static %}
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h2 class="card-title text-center">Register</h2>
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                {% for ma in messages %}
+                    <b>{{ma}}</b>
+                {% endfor %}
+                </div>
+                {% endif %}
+                <form action="addForm" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <h5 for="Username" class="form-label">Username</h5>
+                  <input type="text" class="form-control" name="username" id="Username" aria-describedby="textHelp" placeholder="Enter Username">
+                  <div id="textHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <h5 for="InputPassword" class="form-label">Email</h5>
+                  <input type="email" class="form-control" name="email" id="InputEmail" placeholder="example@gmail.com">
+                </div>
+                <div class="mb-3">
+                  <h5 for="InputPassword" class="form-label">Tel</h5>
+                  <input type="text" class="form-control" name="no" id="InputNo" placeholder="08xxxxxxxx">
+                </div>
+                <div class="mb-3">
+                  <h5 for="InputPassword" class="form-label">Password</h5>
+                  <input type="password" class="form-control" name="password" id="InputPassword" placeholder="Enter Password">
+                </div>
+                <div class="mb-3">
+                  <h5 for="InputPassword" class="form-label">Comfirm Password</h5>
+                  <input type="password" class="form-control" name="con_password" id="InputPassword" placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn mx-auto">register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock%}
+<style>
+  body {
+    background-image: url('/media/Login.png');
+    background-repeat: no-repeat;
+    }
+  .card {
+      position: absolute;
+      left: 900px;
+      top: 200px;
+      z-index: 2;
+      background: #BFA082;
+      border-radius: 0.2rem;
+      margin: 0.5rem 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+      opacity: 0.9;
+    }
+  .form-control {
+      background: #D4C0AB;
+      margin: 0.5rem 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+  .btn {
+      background: hsl(31, 32%, 75%);
+      margin: 0.5rem 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+  .container-fluid{
+      background: #D4C0AB;
+  }
+  
+</style>

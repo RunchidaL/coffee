@@ -1,0 +1,30 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% load humanize %}
+{% block content%}
+<div class="container my-4">
+    <div class="row justify-content-md-center">
+      <div class="col-4">
+          <img href="{{product.get_url}}" src="{{product.image.url}}" alt="" width="400 px" height="400px">
+      </div>
+      <div class="product col-7 my-5">
+        <h3>{{product.name}}</h3>
+        <p>{{product.description|linebreaks}}</p>
+        <b>ราคา {{product.price|intcomma}} บาท</b>
+        <p></p>
+        <form action="{% url 'addCart' product.id %}" method="get">{% csrf_token %}
+          <div class="mb-3">
+            <select name="SugarLevel">
+              <option selected>ระดับความหวาน</option>
+              <option value="หวานมาก">หวานมาก</option>
+              <option value="หวานปานกลาง">หวานปานกลาง</option>
+              <option value="หวานน้อย">หวานน้อย</option>
+            </select>
+          </div>          
+          <div>
+            <input type="submit" value="ใส่ในตะกร้า"  class="btn btn-secondary">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
