@@ -38,10 +38,10 @@ def addForm(request):
             return redirect('signUp')
         else:
             user = User.objects.create_user(
-            username=name,
+            username=username,
             password=password,
             last_name=no,
-            email=emails
+            email=email
             )
             user.save()
             return redirect('order')
