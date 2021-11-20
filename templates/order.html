@@ -5,10 +5,10 @@
 <div class="container">
   <div class="row my-2">
   {% for product in products %}
-  <div class="col-lg-3 mb-3 ">
+  <div class="col-lg-3 mb-3 text-center">
     <a class="productName text-dark" href="{{product.get_url}}">
-      <div class="card-product h-100">
-        <img class="card-img-top" src="{{product.image.url}}" alt="" width="300 px" height="300px">
+      <div class="card h-100">
+        <img class="card-img-top my-4" src="{{product.image.url}}" alt="" width="300 px" height="300px">
         <div class="card-body">
           <h5 class="card-title">
             <span>{{product.name}}</span>
@@ -23,3 +23,11 @@
 </div>
 {% endblock %}
 
+<style>
+  .card {
+      background: #EBEBEB;
+
+    }
+
+  
+  </style>

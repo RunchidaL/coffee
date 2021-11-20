@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from coffee.models import Category,Order,OrderItem,Product,Cart,CartItem
-from django.utils.datastructures import MultiValueDictKeyError
 from django.conf import settings
 import stripe
 # Create your views here.
@@ -44,7 +43,7 @@ def addForm(request):
             email=email
             )
             user.save()
-            return redirect('order')
+            return redirect('login')
     else:
         messages.info(request,'password ไม่ตรง')
         return redirect('signUp')
@@ -52,10 +51,10 @@ def addForm(request):
     return render(request,'signin.html')
 
 def login(request):
-    name=request.POST['username']
+    username=request.POST['username']
     password=request.POST['password']
     #check username password
-    user = auth.authenticate(username=name,password=password)
+    user = auth.authenticate(username=username,password=password)
     if user is not None:
         auth.login(request,user)
         return redirect('order')

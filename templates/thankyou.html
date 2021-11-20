@@ -2,5 +2,18 @@
 {% load static %}
 {% load humanize %}
 {% block content%}
-<p>ขอบคุณจ้า</p>
+<div class="container">
+        <a href="{% url 'order' %}" class="btn-other">ซื้อสินค้าเพิ่มเติม</a>
+</div>
+
 {% endblock%}
+<style>
+    body {
+      background-image: url('/media/messageImage_1637405739508.jpeg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      }
+    .btn-other{
+        background: #BFA082;
+    }
+</style>
