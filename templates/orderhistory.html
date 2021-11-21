@@ -3,6 +3,11 @@
 {% load humanize %}
 {% block content%}
 <div class="font container my-2">
+    {% if not orders %}
+    <div class="alert alert-danger my-2" role="alert">
+        <b>ไม่มีประวัติการสั่งซื้อสินค้า</b>
+    </div>
+    {% else%}
         <h2 align="center">ประวัติการสั่งซื้อ</h2>
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
@@ -34,5 +39,6 @@
                 </tbody>
             </table>
         </div>
+        {% endif %}
 </div>
 {% endblock %}

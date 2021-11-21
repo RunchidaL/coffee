@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User,auth
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
+from shop.forms import SignUpForm
+from django.contrib.auth.forms import AuthenticationForm
 from coffee.models import Category,Order,OrderItem,Product,Cart,CartItem
 from django.conf import settings
 import stripe
@@ -19,48 +22,33 @@ def order(request,category_slug=None):
 
     return render(request,'order.html',{'products':products,'category':category_page})
 
-def signup(request):
-    return render(request,'signup.html')
-
-def addForm(request):
-    username=request.POST['username']
-    email=request.POST['email']
-    no=request.POST['no']
-    password=request.POST['password']
-    con_password=request.POST['con_password']
-    if password==con_password:
-        if User.objects.filter(username=username).exists():
-            messages.info(request,'username นี้มีคนใช้แล้ว')
-            return redirect('signUp')
-        elif User.objects.filter(email=email).exists():
-            messages.info(request,'email นี้มีคนใช้แล้ว')
-            return redirect('signUp')
-        else:
-            user = User.objects.create_user(
-            username=username,
-            password=password,
-            last_name=no,
-            email=email
-            )
-            user.save()
+def signUpView(request):
+    if request.method=='POST':
+        form=SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data.get('username')
+            signUpUser=User.objects.get(username=username)
             return redirect('login')
     else:
-        messages.info(request,'password ไม่ตรง')
-        return redirect('signUp')
-
-    return render(request,'signin.html')
+        form=SignUpForm()
+    return render(request,'signup.html',{'form':form})
 
 def login(request):
-    username=request.POST['username']
-    password=request.POST['password']
-    #check username password
-    user = auth.authenticate(username=username,password=password)
-    if user is not None:
-        auth.login(request,user)
-        return redirect('order')
+    if request.method=='POST':
+        form=AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username=request.POST['username']
+            password=request.POST['password']
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                auth.login(request,user)
+                return redirect('order')
+            else:
+                return redirect('login')
     else:
-        messages.info(request,'ไม่พบข้อมูล')
-        return redirect('login')
+        form=AuthenticationForm()
+    return render(request,'signin.html',{'form':form}) 
 
 def logout(request):
     auth.logout(request)
