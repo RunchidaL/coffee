@@ -2,18 +2,17 @@
 {% load static %}
 {% load humanize %}
 {% block content%}
-<div class="container">
+<div class="font container">
         <a href="{% url 'order' %}" class="btn-other">ซื้อสินค้าเพิ่มเติม</a>
 </div>
-
-{% endblock%}
 <style>
-    body {
-      background-image: url('/media/messageImage_1637405739508.jpeg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      }
-    .btn-other{
-        background: #BFA082;
+  body{
+    background-image: url('/media/messageImage_1637405739508.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
     }
+  .btn-other{
+      background: #BFA082;
+  }
 </style>
+{% endblock%}

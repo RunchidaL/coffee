@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'coffee',
         'USER': 'postgres',
-        'PASSWORD': 'cpe231',
+        'PASSWORD': 'suisip',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -135,5 +135,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PUBLIC_KEY='pk_test_51JpofVAAPybh4rMFSSi5mlXv6miP5DUi4DxC0N2nOfDpSybcXX6CkdXctVAH1tyehdIrY6OgcYEj9p79FkbIaHKP00CPzp6db4'
-SECRET_KEY='sk_test_51JpofVAAPybh4rMFuW372nLoiUoQAopnVttcKAOMNgC7YqLRIkyBl8zh0n7JuVjWvgPODWchtumCl5bCceu4VAkm00BqbKXAdK'
+PUBLIC_KEY='pk_test_51JpftFGPJeD0O43aKuLE8ZvP08ukUyG2i6LW0Uns6Xe1xC8fdt6kkYg0bFX9a3RgmfTjXFXxmdjTWz46SQvbt1On006QBk5u7W'
+SECRET_KEY='sk_test_51JpftFGPJeD0O43afrluyKFHMGWimNKtAFS7uViG7wK03Pw78Ny1UXl3AfDThT0JxYyOEG0FJO0A8Wfx83xysQiP00Eqtt5QFa'

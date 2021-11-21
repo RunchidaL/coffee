@@ -1,7 +1,7 @@
 {% include 'index.html' %}
 {% load static %}
 {% block content%}
-<div class="container">
+<div class="font container">
     <div class="row">
         <div class="card" style="width: 30rem;">
             <div class="card-body">
@@ -18,7 +18,7 @@
                 <div class="mb-3">
                   <h5 for="Username" class="form-label">Username</h5>
                   <input type="text" class="form-control" name="username" id="Username" aria-describedby="textHelp" placeholder="Enter Username">
-                  <div id="textHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <div id="textHelp" class="form-text" style="color:rgb(224, 218, 218); margin-top: -0.5em;">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                   <h5 for="InputPassword" class="form-label">Email</h5>
@@ -36,45 +36,52 @@
                   <h5 for="InputPassword" class="form-label">Comfirm Password</h5>
                   <input type="password" class="form-control" name="con_password" id="InputPassword" placeholder="Enter Password">
                 </div>
-                <button type="submit" class="btn mx-auto">register</button>
+                <button type="submit" class="btn mx-auto" style="margin-top: 5%;">Register</button>
+                <div class="d-flex justify-content-start">
+                  <div>
+                      มีบัญชีแล้ว?
+                         <a class="text-dark" href="{%url 'login'%}" ria-pressed="true" align="right">เข้าสู่ระบบ</a>
+                  </div>
+                </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-    
-{% endblock%}
 <style>
-  body {
+  body{
     background-image: url('/media/Login.png');
     background-repeat: no-repeat;
     }
-  .card {
+  .card{
       position: absolute;
-      left: 900px;
-      top: 200px;
+      right: 900px;
+      top: 120px;
       z-index: 2;
       background: #BFA082;
-      border-radius: 0.2rem;
+      border-radius: 1rem;
       margin: 0.5rem 0 1rem 0;
       display: flex;
       flex-direction: column;
       opacity: 0.9;
     }
-  .form-control {
+  .form-control{
       background: #D4C0AB;
       margin: 0.5rem 0 1rem 0;
       display: flex;
       flex-direction: column;
     }
-  .btn {
+  .btn{
       background: hsl(31, 32%, 75%);
       margin: 0.5rem 0 1rem 0;
       display: flex;
       flex-direction: column;
     }
+  .btn:hover{
+      background: hsl(37, 100%, 65%);
+    }   
   .container-fluid{
       background: #D4C0AB;
-  }
-  
-</style>
+    }
+</style>    
+{% endblock%}

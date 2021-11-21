@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content%}
-<div class="container my-4">
+<div class="font container my-4">
     <div class="row justify-content-md-center">
       <div class="col-4 mx-4">
           <img href="{{product.get_url}}" src="{{product.image.url}}" alt="" width="400 px" height="400px">
@@ -15,22 +15,32 @@
         <form action="{% url 'addCart' product.id %}" method="get">{% csrf_token %}
           <div class="mb-3">
             <select class="se" name="SugarLevel">
-              <option selected>ระดับความหวาน</option>
-              <option value="หวานมาก">หวานมาก</option>
-              <option value="หวานปานกลาง">หวานปานกลาง</option>
-              <option value="หวานน้อย">หวานน้อย</option>
+              <option value="หวานมากที่สุด (100%)">หวานมากที่สุด (100%)</option>
+              <option value="หวานมาก (75%)">หวานมาก (75%)</option>
+              <option value="หวานปกติ (50%)">หวานปกติ (50%)</option>
+              <option value="หวานน้อย (25%)">หวานน้อย (25%)</option>
+              <option value="ไม่หวาน (0%)">ไม่หวาน (0%)</option>
             </select>
           </div>          
           <div>
-            <input type="submit" value="ใส่ในตะกร้า"  class="btn btn-secondary">
+            <input type="submit" value="ใส่ในตะกร้า"  class=" button btn btn-secondary">
         </div>
       </form>
     </div>
   </div>
-{% endblock %}
 <style>
-.se {
-  background: #EBEBEB;
-
+  .se{
+    background: #EBEBEB;
+      }
+  .button{
+    background-color: #BFBFBF;
+    border-radius: 30px;
+    padding: 0.2em 2em;
+    border-style: solid;
+    border-color: white;
+    border-width: medium;
+    box-shadow: 0px 3px 0px #888888;
+    color: black;
     }
-</style>
+</style>  
+{% endblock %}

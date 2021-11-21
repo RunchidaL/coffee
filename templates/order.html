@@ -2,12 +2,12 @@
 {% load static %}
 {% load humanize %}
 {% block content%}
-<div class="container">
+<div class="font container">
   <div class="row my-2">
   {% for product in products %}
-  <div class="col-lg-3 mb-3 text-center">
-    <a class="productName text-dark" href="{{product.get_url}}">
-      <div class="card h-100">
+  <div class="box col-lg-3 mb-3 text-center">
+    <a class="font text-dark" href="{{product.get_url}}">
+      <div class="h-100">
         <img class="card-img-top my-4" src="{{product.image.url}}" alt="" width="300 px" height="300px">
         <div class="card-body">
           <h5 class="card-title">
@@ -21,13 +21,16 @@
   {% endfor %}
   </div>
 </div>
-{% endblock %}
-
 <style>
   .card {
       background: #EBEBEB;
-
     }
+  .box:hover{
+	box-shadow: 2px 2px 25px rgb(65, 65, 65);
+  }  
+  .font:hover{
+    text-decoration: none;
+  }  
+</style>
+{% endblock %}
 
-  
-  </style>

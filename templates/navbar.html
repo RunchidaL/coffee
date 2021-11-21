@@ -1,22 +1,31 @@
 {% include 'index.html' %}
 {% block content%}
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #D4C0AB;">
+<nav class="font navbar navbar-expand-lg navbar-light " style="background-color: #D4C0AB; margin-bottom: 1.2em;">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-          <a class="nav-link active font-weight-bold"  href="{% url 'order' %}">สินค้าทั้งหมด</a>
-        <li class="nav-item dropdown"><a class="nav-link text-dark text-uppercase font-weight-bold px-3 dropdown-toggle"
+          <a class="nav-link active px-3"  href="{% url 'order' %}">สินค้าทั้งหมด</a>
+        <li class="nav-item dropdown"><a class="nav-link text-dark text-uppercase px-3 dropdown-toggle"
           href="" data-toggle="dropdown">กาแฟ</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/category/coffeehot">ร้อน</a>
             <a class="dropdown-item" href="/category/coffeeice">เย็น</a>
+            <a class="dropdown-item" href="/category/coffeefrappe">ปั่น</a>
           </div>
-          <li class="nav-item dropdown"><a class="nav-link text-dark text-uppercase font-weight-bold px-3 dropdown-toggle"
+          <li class="nav-item dropdown"><a class="nav-link text-dark text-uppercase px-3 dropdown-toggle"
+            href="" data-toggle="dropdown">ชา</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/category/teahot">ร้อน</a>
+              <a class="dropdown-item" href="/category/teaice">เย็น</a>
+              <a class="dropdown-item" href="/category/teafrappe">ปั่น</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown"><a class="nav-link text-dark text-uppercase px-3 dropdown-toggle"
             href="" data-toggle="dropdown">นม</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="">ร้อน</a>
-              <a class="dropdown-item" href="">เย็น</a>
-              <a class="dropdown-item" href="">ปั่น</a>
+              <a class="dropdown-item" href="/category/milkhot">ร้อน</a>
+              <a class="dropdown-item" href="/category/milkice">เย็น</a>
+              <a class="dropdown-item" href="/category/milkfrappe">ปั่น</a>
             </div>
           </li>
         </li>
@@ -46,14 +55,12 @@
         </svg>
       </a>
         <div class="dropdown-menu text-center" style="margin-left:-100px;">
-          <a class="nav-link active" href="">{{request.user.username}}</a>
+          <h class="nav-link active" style="color: rgb(126, 126, 126);" href="">{{request.user.username}}</h>
           <a class="nav-link active" href="{%url 'orderHistory'%}">คำสั่งซื้อ</a>
           <a class="nav-link active" href="/logout">logout</a>
         </div>
       </li>
-      
     </ul>
   </div>
-
 </nav>
 {% endblock%}
